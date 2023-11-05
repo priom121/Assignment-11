@@ -1,23 +1,46 @@
 import Lottie from "lottie-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import login from '../../login.animation.json'
 import UseAuth from "../../Provider/Hooks/UseAuth";
+import Swal from "sweetalert2";
+
 const Login = () => {
-const {signIn } =UseAuth()
+  const location = useLocation();
+  const navigate = useNavigate()
+const {signIn,googleLogIn } =UseAuth()
+ 
+const handleGoogle =()=>{
+  googleLogIn()
+  navigate(location?.state ? location?.state : '/')
+}
+
 const handleLogin =(e)=>{
   e.preventDefault()
-  const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
+  console.log(e.currentTarget);
+  const form = new FormData (e.currentTarget)
+  const email = form.get('email')
+ const password = form.get('password')
+ console.log(email,password);
 
     signIn(email, password)
     .then(result=>{
       const user =result.user;
       console.log(user);
+      Swal.fire({
+        icon: 'success',
+        title: 'Done ',
+        text: 'successfully login',
+      })
+      // location
+      navigate(location?.state ? location?.state : '/')
     })
     .catch(error=>{
       console.log(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      })
     })
 }
 
@@ -54,6 +77,10 @@ return (
         Sign Up
         </Link></p>
       </form>
+      <div className="py-4 text-center">
+       <p className="text-center text-lg text-cyan-400">or connect with</p>
+       <button onClick={handleGoogle}className="btn-sm rounded-lg  btn-warning">Google login</button>
+      </div>
     </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import animation from '../../Animation - 1699074418421 (1).json'
 import UseAuth from "../../Provider/Hooks/UseAuth";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
 
@@ -9,20 +10,60 @@ const SignUp = () => {
 
   const handleSignUp =(e)=>{
     e.preventDefault()
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    const photo = form.photo.value;
+    console.log(e.currentTarget);
+    const form = new FormData(e.currentTarget)
+    const name = form.get('name')
+    const email = form.get('email')
+    const password = form.get('password')
+    const photo = form.get('photo')
+    console.log(name,email,password);
     console.log(name,email,password,photo);
+
+    // validation part ---------
+    if(password.length < 6){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'password must be at least 6 characters!',
+      })
+      return;
+    }
+    else if(!/[A-Z]/.test(password)){
+      Swal.fire({
+        icon: 'error',
+        title: 'oopss ',
+        text: 'password must be one capital letter',
+      })
+      return;
+    }
+    else if(!/[@#$%&?]/.test(password)){
+      Swal.fire({
+        icon: 'error',
+        title: 'oopss ',
+        text: 'password must be a special characters',
+      })
+      return;
+    }
    
     createUser(email,password)
     .then(result=>{
       const user =result.user
       console.log(user);
+      Swal.fire({
+        icon: 'success',
+        title: 'Done ',
+        text: 'your register have  successfully',
+      })
+      return;
     })
     .catch(error=>{
       console.log(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        footer: '<a href="">Why do I have this issue?</a>'
+      })
     })
   }
 
