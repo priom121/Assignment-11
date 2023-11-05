@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import animation from '../../Animation - 1699074418421 (1).json'
 import UseAuth from "../../Provider/Hooks/UseAuth";
 import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
+
 
 const SignUp = () => {
 
@@ -16,9 +18,17 @@ const SignUp = () => {
     const email = form.get('email')
     const password = form.get('password')
     const photo = form.get('photo')
-    console.log(name,email,password);
     console.log(name,email,password,photo);
 
+    const profile = currentUser =>{
+      updateProfile(currentUser,{
+      displayName:name ,photoURL:photo
+      })
+      .then(()=>{})
+      .catch(error=>{
+       console.log(error.message);
+      })
+     } 
     // validation part ---------
     if(password.length < 6){
       Swal.fire({
@@ -44,6 +54,7 @@ const SignUp = () => {
       })
       return;
     }
+
    
     createUser(email,password)
     .then(result=>{
@@ -66,6 +77,8 @@ const SignUp = () => {
       })
     })
   }
+
+
 
 return (
 <div className="hero min-h-screen bg-base-200">
@@ -103,7 +116,7 @@ return (
           <label className="label">
             <span className="label-text text-white">Photo</span>
           </label>
-          <input type="text" placeholder="photo url" name='photo' className="input text-black input-bordered" required />
+          <input type="photo" placeholder="photo url" name='photo' className="input text-black input-bordered" required />
           <label className="label">
             <a href="#" className="label-text-alt link link-hover text-white">Forgot password?</a>
           </label>
