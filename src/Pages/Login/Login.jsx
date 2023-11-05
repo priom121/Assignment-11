@@ -1,7 +1,26 @@
 import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import login from '../../login.animation.json'
+import UseAuth from "../../Provider/Hooks/UseAuth";
 const Login = () => {
+const {signIn } =UseAuth()
+const handleLogin =(e)=>{
+  e.preventDefault()
+  const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signIn(email, password)
+    .then(result=>{
+      const user =result.user;
+      console.log(user);
+    })
+    .catch(error=>{
+      console.log(error);
+    })
+}
+
 return (
 <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-row">
@@ -10,7 +29,7 @@ return (
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl 
     bg-gradient-to-r from-blue-500 to-red-500 text-white">
-      <form  className="card-body">
+      <form onSubmit={handleLogin} className="card-body">
       <h1 className="text-2xl font-bold">Login!</h1>
         <div className="form-control">
           <label className="label">
