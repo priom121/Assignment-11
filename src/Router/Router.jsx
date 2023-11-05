@@ -35,15 +35,15 @@ const router = createBrowserRouter([
         path:'/MyFoodRequest',
         element:<MyFoodRequest></MyFoodRequest>
       },
+      {
+        path:'/login',
+        element:<Login></Login>
+       },
+       {
+        path:'/signUp',
+        element:<SignUp></SignUp>
+       },
  ]
- },
- {
-  path:'/login',
-  element:<Login></Login>
- },
- {
-  path:'/signUp',
-  element:<SignUp></SignUp>
  },
 ]);
 

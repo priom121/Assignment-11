@@ -3,7 +3,7 @@ import logo from '../../../public/logo food.png'
 
 const Navbar = () => {
  const navLinks = <>
-<ul className="lg:flex  items-center gap-5 text-xl font-medium">
+<ul className="lg:flex  items-center gap-5 text-lg font-medium">
   <li>
  <NavLink
 to="/"
@@ -14,30 +14,52 @@ className={({ isActive, isPending }) =>
  Home
 </NavLink>
  </li>                    
- {/* <li>
+ <li>
  <NavLink
-to="/addProDucts"
+to="/AvailableFoods"
  className={({ isActive, isPending }) =>
   isPending ? "pending" : isActive ? "text-red-600" : ""
 }
 >
- AddProDucts
+AvailableFoods
 </NavLink>
- </li> */}
+ </li>
 
- {/* <li>
+ <li>
                                  
  <NavLink
-to="/myCart"
+to="/AddFood"
 className={({ isActive, isPending }) =>
  isPending ? "pending" : isActive ? "text-red-600" : ""
 }
 >
-MyCart
+AddFood
 </NavLink>
- </li> */}
+ </li>
+ <li>
+                                 
+ <NavLink
+to="/ManageMyFoods"
+className={({ isActive, isPending }) =>
+ isPending ? "pending" : isActive ? "text-red-600" : ""
+}
+>
+ManageMyFoods
+</NavLink>
+ </li>
+ <li>
+                                 
+ <NavLink
+to="/MyFoodRequest"
+className={({ isActive, isPending }) =>
+ isPending ? "pending" : isActive ? "text-red-600" : ""
+}
+>
+MyFoodRequest
+</NavLink>
+ </li>
                            
- {/* <li>
+ <li>
  <NavLink
 to="/login"
  className={({ isActive, isPending }) =>
@@ -46,7 +68,7 @@ to="/login"
 >
 Login
  </NavLink>
- </li> */}
+ </li>
 </ul>
  </> 
 return (
@@ -63,9 +85,9 @@ return (
       </ul>
     </div>
 <div>
-<a className="btn btn-ghost normal-case md:text-3xl ">
-     <img className=" w-[60px] h-[50px] md:w-[70px] md:h-[70px] rounded-3xl" src={logo }></img>
-<span className="text-blue-500">Food Forward</span></a>
+<a className="flex gap-3 items-center md:text-2xl ">
+     <img className=" w-[60px] h-[50px] md:w-[70px] md:h-[60px] rounded-3xl" src={logo }></img>
+<span className="text-blue-500 font-bold">Food Forward</span></a>
 </div>
   </div>
   <div className="navbar-center hidden lg:flex">
