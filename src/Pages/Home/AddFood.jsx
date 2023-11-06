@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 
 const AddFood = () => {
 
@@ -12,6 +13,11 @@ const AddFood = () => {
     const additional  =form.additional.value;
     const user ={photo ,name,Quantity,Location,Date,additional };
     // const details = {photo ,name,brand,type,price,description,rating}
+    Swal.fire({
+      icon: 'success',
+      title: 'Done ',
+      text: 'successfully added foods',
+    })
     console.log(user);
   }
 return (
