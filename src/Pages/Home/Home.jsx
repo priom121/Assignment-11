@@ -1,5 +1,6 @@
 import Banner from "../Banner/Banner";
 import FetaureFood from "./FetaureFood";
+import About from "./Gallery/About";
 import Gallery from "./Gallery/Gallery";
 
 
@@ -8,7 +9,8 @@ const Home = () => {
  <div>
     <Banner></Banner>
     <FetaureFood></FetaureFood> 
-    <Gallery></Gallery>                                                                                    
+    <Gallery></Gallery>
+    <About></About>                                                                                    
  </div>
 );
 };
