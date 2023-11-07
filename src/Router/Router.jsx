@@ -9,6 +9,8 @@ import MyFoodRequest from "../Pages/Home/MyFoodRequest";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRouter from "./PrivateRouter";
+import ViewDetails from "../Pages/Home/ViewDetails";
+
 
 const router = createBrowserRouter([
  {
@@ -44,6 +46,11 @@ const router = createBrowserRouter([
         path:'/signUp',
         element:<SignUp></SignUp>
        },
+       {
+        path:'/viewDetails/:id',
+        element:<ViewDetails></ViewDetails>,
+        loader:({params})=>fetch(`http://localhost:5000/food/${params.id}`)
+       }
  ]
  },
 ]);
