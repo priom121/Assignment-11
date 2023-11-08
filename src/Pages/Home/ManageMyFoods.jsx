@@ -67,9 +67,10 @@ const ManageMyFoods = () => {
 
 return (
  <div >
-<table className="table mx-auto">
+<table className="table  mx-auto mt-5 
+ bg-gradient-to-r from-[#151515] to-yellow-300">
 <thead >
-      <tr >
+      <tr  className="text-white">
         <th>photo</th>
         <th>Quantity</th>
         <th>Location</th>
@@ -77,7 +78,7 @@ return (
       </tr>
     </thead>
 </table>
-    <div className="max-w-screen-xl mx-auto ">
+    <div className=" text-white bg-gradient-to-r from-[#151515] to-yellow-300">
        {request.map(requests=>
        <ManageFoodCard key={requests._id} requests={requests} 
        handleDelete={handleDelete} ></ManageFoodCard>)} 

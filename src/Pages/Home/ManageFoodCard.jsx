@@ -6,15 +6,15 @@ const ManageFoodCard = ({requests ,handleDelete }) => {
  const { _id ,photo,Quantity,Location,Date} =requests
 
  return (
- <div className="mt-10">
+ <div className="mt-10 ">
 
-<div className="overflow-x-auto">
+<div className="overflow-x-auto ">
   <table className="table">
 
     <tbody>
       <tr>
         <th>
-        <div className="mask mask-squircle w-20 h-12">
+        <div className="mask mask-squircle w-28 h-20">
                 <img src={photo} alt="Avatar Tailwind CSS Component" />
               </div>
         </th>
