@@ -52,7 +52,7 @@ lg:card-side bg-orange-300 shadow-xl h-[50vh] items-center mt-12">
  </form>
     <div className="modal-action ">
       <form method="dialog ">
-        <Link to='/ManageMyFoods'>
+        <Link >
         <button className="btn btn-info mr-3">Request</button>
         </Link>
         {/* if there is a button in form, it will close the modal */}

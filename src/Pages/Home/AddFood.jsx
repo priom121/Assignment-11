@@ -1,3 +1,4 @@
+
 import Swal from "sweetalert2";
 
 const AddFood = () => {
@@ -13,12 +14,24 @@ const AddFood = () => {
     const additional  =form.additional.value;
     const user ={photo ,name,Quantity,Location,Date,additional };
     // const details = {photo ,name,brand,type,price,description,rating}
-    Swal.fire({
-      icon: 'success',
-      title: 'Done ',
-      text: 'successfully added foods',
+    fetch('http://localhost:5000/request',{
+      method:'POST',
+      headers:{
+        'content-type':'application/json'
+      },
+      body:JSON.stringify(user)
     })
-    console.log(user);
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+         if(data.insertedID){
+        Swal.fire({
+          icon: 'success',
+          title: 'success',
+          text: ' user added successfully',
+        })
+      }
+    })
   }
 return (
   <div className="bg-blue-200 rounded-xl py-10 mt-5 mb-5 max-w-screen-xl mx-auto">
