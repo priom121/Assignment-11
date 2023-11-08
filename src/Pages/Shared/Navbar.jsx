@@ -94,7 +94,7 @@ return (
 <div>
 <a className="flex gap-3 items-center md:text-2xl ">
      <img className=" w-[60px] h-[50px] md:w-[70px] md:h-[60px] rounded-3xl" src={logo }></img>
-<span className="text-blue-500 font-bold">Food Forward</span></a>
+<span className="text-blue-500 text-xl font-bold">Food Forward</span></a>
 </div>
   </div>
   <div className="navbar-center hidden lg:flex">

@@ -25,7 +25,7 @@ return (
 </form>
      <div className="">
      <label className="input-group bg-slate-700 mt-5">
-      {/* <select type="text" placeholder=" Pickup Location" name="Location" className="input input-bordered w-full" /> */}
+    
       <select onChange={(e)=>setExpiredDate(e.target.value)} placeholder="Pickup Location" name="Location"
          className="w-full select select-bordered  ">
             <option value="asc" selected>low to high</option>
