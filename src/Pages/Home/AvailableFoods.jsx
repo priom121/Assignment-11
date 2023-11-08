@@ -5,7 +5,7 @@ const AvailableFoods = () => {
     const [available ,setAvailable] =useState([])
     const [expiredDate ,setExpiredDate] = useState('')
     useEffect(()=>{
-     fetch(`http://localhost:5000/available?sortField=expiredDate&sortOrder=${expiredDate}`)
+     fetch(`https://food-forward-server.vercel.app/available?sortField=expiredDate&sortOrder=${expiredDate}`)
         .then(res=>res.json())
         .then(data=>setAvailable(data))
     },[])

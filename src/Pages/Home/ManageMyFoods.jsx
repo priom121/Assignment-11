@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const ManageMyFoods = () => {
     const [request ,setRequest] =useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/request')
+        fetch('https://food-forward-server.vercel.app/request')
         .then(res=>res.json())
         .then(data=>setRequest(data))
     },[])
@@ -22,7 +22,7 @@ const ManageMyFoods = () => {
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
         if (result.isConfirmed) {
-       fetch(`http://localhost:5000/request/${id}`,{
+       fetch(`https://food-forward-server.vercel.app/request/${id}`,{
       method:'DELETE'
        })
         .then(res=>res.json())
@@ -43,7 +43,7 @@ const ManageMyFoods = () => {
       }
 
     //   const handleUpdate =(id)=>{
-    //   fetch(`http://localhost:5000/request/${id}`,{
+    //   fetch(`https://food-forward-server.vercel.app/request/${id}`,{
     //     method:'PATCH',
     //     headers:{
     //         'content-type':'application/json'

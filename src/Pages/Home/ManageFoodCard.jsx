@@ -38,6 +38,11 @@ const ManageFoodCard = ({requests ,handleDelete }) => {
         <button > <FiEdit></FiEdit></button>
         </Link>
         </th>
+        <th className='text-2xl font-bold'>
+        <Link to={`/manageSingleFood/${_id}`}>
+        <button className='btn btn-info' > Manage </button>
+        </Link>
+        </th>
       </tr>
     
     </tbody>

@@ -14,7 +14,7 @@ const AddFood = () => {
     const additional  =form.additional.value;
     const user ={photo ,name,Quantity,Location,Date,additional };
     // const details = {photo ,name,brand,type,price,description,rating}
-    fetch('http://localhost:5000/request',{
+    fetch('https://food-forward-server.vercel.app/request',{
       method:'POST',
       headers:{
         'content-type':'application/json'

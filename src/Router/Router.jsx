@@ -12,6 +12,7 @@ import PrivateRouter from "./PrivateRouter";
 import ViewDetails from "../Pages/Home/ViewDetails";
 import AvailableOneCard from "../Pages/Home/AvailableOneCard";
 import UpdatedFood from "../Pages/Home/UpdatedFood";
+import ManageSIngleFood from "../Pages/Home/ManageSIngleFood";
 
 
 const router = createBrowserRouter([
@@ -51,17 +52,22 @@ const router = createBrowserRouter([
        {
         path:'/viewDetails/:id',
         element:<ViewDetails></ViewDetails>,
-        loader:({params})=>fetch(`http://localhost:5000/food/${params.id}`)
+        loader:({params})=>fetch(`https://food-forward-server.vercel.app/food/${params.id}`)
        },
        {
         path:'/availableOneCard/:id',
         element:<AvailableOneCard></AvailableOneCard>,
-        loader:({params})=>fetch(`http://localhost:5000/available/${params.id}`)
+        loader:({params})=>fetch(`https://food-forward-server.vercel.app/available/${params.id}`)
        },
      {
       path:'/updatedFood/:id',
       element:<UpdatedFood></UpdatedFood>,
-      loader:({params})=>fetch(`http://localhost:5000/request/${params.id}`)
+      loader:({params})=>fetch(`https://food-forward-server.vercel.app/request/${params.id}`)
+     },
+     {
+      path:'/manageSingleFood/:id',
+      element:<ManageSIngleFood></ManageSIngleFood>,
+      loader:({params}) =>fetch(`https://food-forward-server.vercel.app/${params.id}`)
      }
 
  ]

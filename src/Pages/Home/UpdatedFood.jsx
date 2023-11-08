@@ -15,7 +15,7 @@ const UpdatedFood = () => {
  const Date =form.Date.value;
   const user ={photo ,Quantity,Location,Date};
   // const details = {photo ,name,brand,type,price,description,rating}
- fetch(`http://localhost:5000/request/${_id}`,{
+ fetch(`https://food-forward-server.vercel.app/request/${_id}`,{
   method:'PUT',
   headers:{
     'content-type':'application/json'

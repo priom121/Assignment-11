@@ -8,7 +8,7 @@ const FetaureFood = () => {
 
      const [food,setFood] =useState([]);
      useEffect(()=>{
-           fetch('http://localhost:5000/food')
+           fetch('https://food-forward-server.vercel.app/food')
            .then(res=>res.json())
            .then(data=>setFood(data))
             // setFood(data)
