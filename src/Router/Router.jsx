@@ -67,7 +67,7 @@ const router = createBrowserRouter([
      {
       path:'/manageSingleFood/:id',
       element:<ManageSIngleFood></ManageSIngleFood>,
-      loader:({params}) =>fetch(`https://food-forward-server.vercel.app/${params.id}`)
+      loader:({params}) =>fetch(`https://food-forward-server.vercel.app/request/${params.id}`)
      }
 
  ]

@@ -1,14 +1,15 @@
 import Lottie from "lottie-react";
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import animation from '../../Animation - 1699074418421 (1).json'
 import UseAuth from "../../Provider/Hooks/UseAuth";
 import Swal from "sweetalert2";
-import { updateProfile } from "firebase/auth";
+
 
 
 const SignUp = () => {
 
-  const {createUser} = UseAuth()
+  const {createUser ,userProfile} = UseAuth()
+ const navigate = useNavigate()
 
   const handleSignUp =(e)=>{
     e.preventDefault()
@@ -20,15 +21,7 @@ const SignUp = () => {
     const photo = form.get('photo')
     console.log(name,email,password,photo);
 
-    const profile = currentUser =>{
-      updateProfile(currentUser,{
-      displayName:name ,photoURL:photo
-      })
-      .then(()=>{})
-      .catch(error=>{
-       console.log(error.message);
-      })
-     } 
+  
     // validation part ---------
     if(password.length < 6){
       Swal.fire({
@@ -54,32 +47,31 @@ const SignUp = () => {
       })
       return;
     }
-
+  
    
-    createUser(email,password)
-    .then(result=>{
-      const user =result.user
-      console.log(user);
-      Swal.fire({
-        icon: 'success',
-        title: 'Done ',
-        text: 'your register have  successfully',
-      })
-      return;
-    })
-    .catch(error=>{
-      console.log(error);
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-        footer: '<a href="">Why do I have this issue?</a>'
-      })
-    })
-  }
+    createUser(email, password)
+    .then(res => {
+        userProfile(name, photo)
+            .then(res => {
+                console.log(res.user);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+            console.log(res?.user);
+                navigate(location?.state ? location.state : '/')
+                Swal("Good job", "Register successful", "success").then(() => {
+                    window.location.reload();
+
+                })
+            })
+            .catch(error => {
+                console.log(error);
+
+            })
 
 
-
+          }         
 return (
 <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-row">
@@ -89,7 +81,7 @@ return (
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm 
     bg-gradient-to-r from-blue-400 to-green-300 text-white">
-      <form onSubmit={handleSignUp} className="card-body">
+      <form onSubmit={ handleSignUp } className="card-body">
       <h1 className="text-2xl font-bold">Sign Up</h1>
         <div className="form-control">
           <label className="label">

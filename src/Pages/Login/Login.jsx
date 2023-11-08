@@ -11,6 +11,9 @@ const {signIn,googleLogIn } =UseAuth()
  
 const handleGoogle =()=>{
   googleLogIn()
+  .then(res=>{
+    console.log(res.user);
+  })
   navigate(location?.state ? location?.state : '/')
 }
 

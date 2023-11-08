@@ -7,6 +7,7 @@ const Navbar = () => {
   const {user,logOut} =UseAuth()
 
   const handleLogOut =()=>{
+
     logOut()
   }
  const navLinks = <>
@@ -106,7 +107,23 @@ return (
    <ul>
   <li>
 {
-  user ? <button onClick={handleLogOut} className="btn btn-error" >Logout</button> 
+  user?.email ? <div className="dropdown dropdown-end md:mr-5 z-[10]">
+  <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+      <div className="w-12 rounded-full">
+          <img src={user?.photoURL} alt="User Photo" />
+      </div>
+      </label>
+      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 mr-4 z-[1]  shadow bg-base-100 rounded-box max-w-[300px] p-5">
+                       <li className="font-black ml-3">
+               {user?.displayName}
+                     </li>
+           <li><a className="px-5" >{user?.email}</a></li>
+      <li><button onClick={handleLogOut} className="text-xl font-bold">Logout</button></li>
+                                    
+                  </ul>
+                                    
+                    </div>
+
    :<NavLink
    to="/login"
     className={({ isActive, isPending }) =>

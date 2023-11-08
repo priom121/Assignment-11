@@ -22,6 +22,17 @@ const signIn =(email,password)=>{
   return signInWithEmailAndPassword(auth,email,password)
 }
 
+const userProfile = (name, image) => {
+  setLoading(true)
+  return updateProfile(auth.currentUser, {
+      displayName: name, photoURL: image
+  })
+}
+  // .then(()=>{})
+  // .catch(error=>{
+  //  console.log(error.message);
+  // })
+
 const provider = new GoogleAuthProvider()
 const googleLogIn = ()=>{
   setLoading(true);
@@ -42,7 +53,7 @@ const unsubscribe = onAuthStateChanged(auth,currentUser=>{
  return unsubscribe()
  }
 },[])
- const authInfo ={user,loading, createUser,signIn,logOut ,googleLogIn}
+ const authInfo ={user,loading, createUser,signIn,logOut ,googleLogIn,userProfile}
 
 return (
  <AuthContext.Provider value={authInfo}>
