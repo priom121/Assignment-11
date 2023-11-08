@@ -11,6 +11,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRouter from "./PrivateRouter";
 import ViewDetails from "../Pages/Home/ViewDetails";
 import AvailableOneCard from "../Pages/Home/AvailableOneCard";
+import UpdatedFood from "../Pages/Home/UpdatedFood";
 
 
 const router = createBrowserRouter([
@@ -56,7 +57,12 @@ const router = createBrowserRouter([
         path:'/availableOneCard/:id',
         element:<AvailableOneCard></AvailableOneCard>,
         loader:({params})=>fetch(`http://localhost:5000/available/${params.id}`)
-       }
+       },
+     {
+      path:'/updatedFood/:id',
+      element:<UpdatedFood></UpdatedFood>,
+      loader:({params})=>fetch(`http://localhost:5000/request/${params.id}`)
+     }
 
  ]
  },
